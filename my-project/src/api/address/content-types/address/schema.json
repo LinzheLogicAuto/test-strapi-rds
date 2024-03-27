@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "address_detail": {
-      "type": "string",
-      "required": true
-    },
     "vmusers": {
       "type": "relation",
       "relation": "manyToMany",
@@ -29,6 +25,9 @@
         "work"
       ],
       "required": true
+    },
+    "new_detail": {
+      "type": "string"
     }
   }
 }
