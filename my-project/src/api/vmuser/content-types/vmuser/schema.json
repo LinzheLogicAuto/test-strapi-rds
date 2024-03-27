@@ -26,6 +26,12 @@
     "phoneNumber": {
       "type": "biginteger",
       "required": true
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::address.address",
+      "mappedBy": "vmusers"
     }
   }
 }

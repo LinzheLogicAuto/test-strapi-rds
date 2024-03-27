@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "addresses",
+  "info": {
+    "singularName": "address",
+    "pluralName": "addresses",
+    "displayName": "address",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address_detail": {
+      "type": "string",
+      "required": true
+    },
+    "vmusers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::vmuser.vmuser",
+      "inversedBy": "addresses"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "home",
+        "work"
+      ],
+      "required": true
+    }
+  }
+}
