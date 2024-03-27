@@ -800,13 +800,13 @@ export interface ApiAddressAddress extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    address_detail: Attribute.String & Attribute.Required;
     vmusers: Attribute.Relation<
       'api::address.address',
       'manyToMany',
       'api::vmuser.vmuser'
     >;
     type: Attribute.Enumeration<['home', 'work']> & Attribute.Required;
+    new_detail: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -818,6 +818,36 @@ export interface ApiAddressAddress extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::address.address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVehicleVehicle extends Schema.CollectionType {
+  collectionName: 'vehicles';
+  info: {
+    singularName: 'vehicle';
+    pluralName: 'vehicles';
+    displayName: 'vehicle';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    car: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vehicle.vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vehicle.vehicle',
       'oneToOne',
       'admin::user'
     > &
@@ -882,6 +912,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::address.address': ApiAddressAddress;
+      'api::vehicle.vehicle': ApiVehicleVehicle;
       'api::vmuser.vmuser': ApiVmuserVmuser;
     }
   }
