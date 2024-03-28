@@ -11,21 +11,30 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "username": {
+      "type": "string"
+    },
     "firstname": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "lastname": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "email": {
-      "type": "email",
-      "required": true
+      "type": "email"
     },
-    "phoneNumber": {
-      "type": "biginteger",
-      "required": true
+    "password": {
+      "type": "password"
+    },
+    "role": {
+      "type": "enumeration",
+      "enum": [
+        "admin",
+        "visitor"
+      ]
+    },
+    "phone_number": {
+      "type": "biginteger"
     },
     "addresses": {
       "type": "relation",

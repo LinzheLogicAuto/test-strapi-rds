@@ -4,30 +4,28 @@
   "info": {
     "singularName": "address",
     "pluralName": "addresses",
-    "displayName": "address",
-    "description": ""
+    "displayName": "address"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "address_detail": {
+      "type": "string"
+    },
     "vmusers": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::vmuser.vmuser",
       "inversedBy": "addresses"
     },
-    "type": {
+    "address_type": {
       "type": "enumeration",
       "enum": [
         "home",
         "work"
-      ],
-      "required": true
-    },
-    "new_detail": {
-      "type": "string"
+      ]
     }
   }
 }
