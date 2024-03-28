@@ -362,83 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiAddressAddress extends Schema.CollectionType {
-  collectionName: 'addresses';
-  info: {
-    singularName: 'address';
-    pluralName: 'addresses';
-    displayName: 'address';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    address_detail: Attribute.String;
-    vmusers: Attribute.Relation<
-      'api::address.address',
-      'manyToMany',
-      'api::vmuser.vmuser'
-    >;
-    address_type: Attribute.Enumeration<['home', 'work']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::address.address',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::address.address',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiVmuserVmuser extends Schema.CollectionType {
-  collectionName: 'vmusers';
-  info: {
-    singularName: 'vmuser';
-    pluralName: 'vmusers';
-    displayName: 'vmuser';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    username: Attribute.String;
-    firstname: Attribute.String;
-    lastname: Attribute.String;
-    email: Attribute.Email;
-    password: Attribute.Password;
-    role: Attribute.Enumeration<['admin', 'visitor']>;
-    phone_number: Attribute.BigInteger;
-    addresses: Attribute.Relation<
-      'api::vmuser.vmuser',
-      'manyToMany',
-      'api::address.address'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::vmuser.vmuser',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::vmuser.vmuser',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -865,6 +788,83 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiAddressAddress extends Schema.CollectionType {
+  collectionName: 'addresses';
+  info: {
+    singularName: 'address';
+    pluralName: 'addresses';
+    displayName: 'address';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address_detail: Attribute.String;
+    vmusers: Attribute.Relation<
+      'api::address.address',
+      'manyToMany',
+      'api::vmuser.vmuser'
+    >;
+    address_type: Attribute.Enumeration<['home', 'work']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::address.address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::address.address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVmuserVmuser extends Schema.CollectionType {
+  collectionName: 'vmusers';
+  info: {
+    singularName: 'vmuser';
+    pluralName: 'vmusers';
+    displayName: 'vmuser';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    username: Attribute.String;
+    firstname: Attribute.String;
+    lastname: Attribute.String;
+    email: Attribute.Email;
+    password: Attribute.Password;
+    role: Attribute.Enumeration<['admin', 'visitor']>;
+    phone_number: Attribute.BigInteger;
+    addresses: Attribute.Relation<
+      'api::vmuser.vmuser',
+      'manyToMany',
+      'api::address.address'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vmuser.vmuser',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vmuser.vmuser',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -875,8 +875,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::address.address': ApiAddressAddress;
-      'api::vmuser.vmuser': ApiVmuserVmuser;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -885,6 +883,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::address.address': ApiAddressAddress;
+      'api::vmuser.vmuser': ApiVmuserVmuser;
     }
   }
 }
